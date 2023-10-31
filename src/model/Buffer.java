@@ -6,29 +6,44 @@ import java.util.Queue;
 
 public class Buffer {
 
-    Queue<Item> buffer = new LinkedList<Item>();
+    static Queue<Item> bufferList;
+
+    public Buffer(Queue<Item> bufferList) {
+        Buffer.bufferList = bufferList;
+    }
 
     public synchronized void add(Item item) {
-        buffer.add(item);
+        if(bufferList.size() >= 100) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }else{
+
+        bufferList.add(item);
         notify();
-        System.out.print( buffer.size() + "%\r");
+        System.out.print( bufferList.size() + "%\r");
+        }
     }
 
     public synchronized void remove() {
-        if(buffer.isEmpty()) {
+        if(bufferList.isEmpty()) {
             try {
                 wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }else if(bufferList.size()<100){
+            notify();
         }
 
         try{
-            buffer.remove();
+            bufferList.remove();
         }catch(NoSuchElementException e) {
             System.out.println("rad 29 " + e);
         }
-        System.out.print( buffer.size() + "%\r");
+        System.out.print( bufferList.size() + "%\r");
     }
 
 
