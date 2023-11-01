@@ -40,7 +40,7 @@ public class Buffer {
         try{
             bufferList.remove();
         }catch(NoSuchElementException e) {
-            System.out.println("rad 29 " + e);
+            System.out.println("In Buffer " + e);
         }
         System.out.print( bufferList.size() + "%\r");
     }

@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26d428b7-76c0-41fa-938c-4642ebbcca0f" name="Changes" comment="logging and reading from text-file">
+    <list default="true" id="26d428b7-76c0-41fa-938c-4642ebbcca0f" name="Changes" comment="improved the logging code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Consumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Producer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +39,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "C:/Users/felix/Desktop/Grit-Academy/Avancerad-Java/PrimeNumbers",
-    "settings.editor.selected.configurable": "preferences.editor"
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
