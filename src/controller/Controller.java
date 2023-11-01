@@ -17,30 +17,44 @@ import java.util.Queue;
 
 public class Controller {
 
-
+//TODO -- 1 -- Lägga till färgmarkeringar om antalet enheter blir för högt/lågt
+//TODO -- 1 -- Organisera koden så att den följer MVC och facade pattern
+//TODO -- 2 -- Skriva en kort beskrivning av programmet på GitHub
+//TODO -- 2 -- Skriva en längre beskrivning av min lösning på google drive
+//TODO -- 2 -- Skapa ett klassdiagram
     static Queue<Item> bufferList = new LinkedList<Item>();
     private static final Buffer buffer = new Buffer(bufferList);
     private static List<Producer> producers;
-    private static JTextArea consoleOutput;
     private static JTextArea textfileOutput;
     private static JProgressBar progressBar;
-    private static Timer timer;
+    private static Timer timer1;
+    private static Timer timer10;
+    private static int inventoryPercentage;
+    private static StringBuilder newFileContent;
 
     public Controller() {
         SwingUtilities.invokeLater(Controller::createAndShowGUI);
 
-        timer = new Timer(1000, new ActionListener() {
+        timer1 = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateProgressBar();
             }
         });
+        timer10 = new Timer(10000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                logEventToFile("showInventory");
+            }
+        });
     }
+
 
     private static void createAndShowGUI() {
         JFrame frame = new JFrame("Producer-Consumer Simulation");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 300);
+        frame.setSize(600, 400);
         frame.setLayout(new FlowLayout());
 
         JButton addProducerButton = new JButton("Add Producer");
@@ -49,23 +63,19 @@ public class Controller {
 
         producers = new ArrayList<>();
 
-        consoleOutput = new JTextArea(10, 30);
-        textfileOutput = new JTextArea(10, 30);
+        newFileContent = new StringBuilder();
+        textfileOutput = new JTextArea(10, 50);
         progressBar = new JProgressBar(0, 100);
         progressBar.setStringPainted(true);
-        JScrollPane scrollPane = new JScrollPane(consoleOutput);
         JScrollPane textFileScrollPane = new JScrollPane(textfileOutput);
 
         logProducersToFile();
-        loadFileContent();
 
         addProducerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addProducer();
-                displayAmountOfProducers();
-                logProducersToFile();
-                loadFileContent();
+                logEventToFile("added");
             }
         });
         removeProducerButton.addActionListener(new ActionListener() {
@@ -73,11 +83,9 @@ public class Controller {
             public void actionPerformed(ActionEvent e) {
                 if (!producers.isEmpty()) {
                     removeProducer();
-                    displayAmountOfProducers();
-                    logProducersToFile();
-                    loadFileContent();
+                    logEventToFile("removed");
                 } else {
-                    consoleOutput.append("No producers to remove\n");
+//                    consoleOutput.append("No producers to remove\n");
                 }
             }
         });
@@ -96,29 +104,25 @@ public class Controller {
         frame.add(addConsumersButton);
         frame.add(removeProducerButton);
         frame.add(progressBar);
-        frame.add(scrollPane);
         frame.add(textFileScrollPane);
 
         frame.setVisible(true);
 
-        timer.start();
+        timer1.start();
+        timer10.start();
     }
 
     private static void updateProgressBar() {
         int bufferSize = bufferList.size();
         int maxBufferSize = 100; // Adjust this if needed
-        int percentage = (int) (bufferSize * 100.0 / maxBufferSize);
-        progressBar.setValue(percentage);
+        inventoryPercentage = (int) (bufferSize * 100.0 / maxBufferSize);
+        progressBar.setValue(inventoryPercentage);
     }
 
     private static void addConsumer() {
         Consumer consumer = new Consumer(buffer);
         Thread consumerThread = new Thread(consumer);
         consumerThread.start();
-    }
-
-    private static void displayAmountOfProducers() {
-        consoleOutput.append("Amount of Producers: " + producers.size() + "\n");
     }
 
     private static void addProducer() {
@@ -132,13 +136,33 @@ public class Controller {
         producers.get(0).stop();
         producers.remove(0);
     }
+
+    private static void logEventToFile(String event) {
+        newFileContent = new StringBuilder();
+        switch (event) {
+            case "added" -> newFileContent.append("Producer added\n");
+            case "removed" -> newFileContent.append("Producer removed\n");
+            case "showInventory" ->
+                    newFileContent.append("Inventory is at ").append(inventoryPercentage).append("% capacity\n");
+        }
+        logProducersToFile();
+    }
+
     private static void logProducersToFile() {
+        newFileContent.append("\n Amount of Producers: ").append(producers.size()).append("\n").append("If the amount of items in inventory goes down to 10% then the consumers stop buying \n").append("If it goes above 90% then the producers stop producing \n");
+        int count = 1;
+        for (Producer producer : producers) {
+            newFileContent.append("Producer").append(count).append(" frequency: ").append(producer.getFrequency()).append("\n");
+            count++;
+        }
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/files/producers.txt"))) {
-            writer.write("Amount of Producers: " + producers.size() + "\n");
+            writer.write(newFileContent.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        loadFileContent();
     }
+
     private static void loadFileContent() {
         try (BufferedReader reader = new BufferedReader(new FileReader("src/files/producers.txt"))) {
             String line;

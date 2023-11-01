@@ -13,7 +13,7 @@ public class Buffer {
     }
 
     public synchronized void add(Item item) {
-        if(bufferList.size() >= 100) {
+        if(bufferList.size() >= 90) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -23,12 +23,11 @@ public class Buffer {
 
         bufferList.add(item);
         notify();
-        System.out.print( bufferList.size() + "%\r");
         }
     }
 
     public synchronized void remove() {
-        if(bufferList.isEmpty()) {
+        if(bufferList.size() <= 10) {
             try {
                 wait();
             } catch (InterruptedException e) {

@@ -4,7 +4,7 @@ package model;
 public class Consumer implements Runnable {
     Buffer buffer = null;
     boolean isRunning = true;
-    int frequency = (int) (Math.random()*5)+1;
+    int frequency = (int) (Math.random()*10)+1;
 
     public Consumer(Buffer buffer) {
         this.buffer = buffer;

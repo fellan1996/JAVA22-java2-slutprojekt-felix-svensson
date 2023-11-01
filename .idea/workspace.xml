@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26d428b7-76c0-41fa-938c-4642ebbcca0f" name="Changes" comment="init Commit">
+    <list default="true" id="26d428b7-76c0-41fa-938c-4642ebbcca0f" name="Changes" comment="logging and reading from text-file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Buffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Consumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Producer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +39,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/felix/Desktop/Grit-Academy/Avancerad-Java/PrimeNumbers",
+    "settings.editor.selected.configurable": "preferences.editor"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -56,11 +60,19 @@
       <option name="project" value="LOCAL" />
       <updated>1698397179214</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="logging and reading from text-file">
+      <created>1698742871506</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698742871506</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="init Commit" />
+    <MESSAGE value="logging and reading from text-file" />
+    <option name="LAST_COMMIT_MESSAGE" value="logging and reading from text-file" />
   </component>
 </project>
