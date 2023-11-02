@@ -8,16 +8,20 @@ import view.GUI;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 public class Controller {
 
-//TODO -- 1 -- Organisera koden så att den följer MVC och facade pattern
-//TODO -- 2 -- Skriva en kort beskrivning av programmet på GitHub
-//TODO -- 2 -- Skriva en längre beskrivning av min lösning på google drive
-//TODO -- 2 -- Skapa ett klassdiagram
+    //TODO -- 1 -- Lägga till klassdiagrammet på GitHub beskrivningen
+//TODO -- 1 -- Skapa ett klassdiagram
+//TODO -- 1 -- Jag har en massa static. Synpunkter?
+//TODO -- 1 -- Var ska notify vara?
+//TODO -- 1 -- Ska producers.txt med i git?
+//TODO -- 1 -- Vad tycks om min Main.java? Konstigt upplägg?
+//TODO -- 1 -- Tar jag bort en producer på rätt sätt?
+//TODO -- 1 -- Hoppar fram och tillbaka mellan view och Controller. Onödigt? värt det? Exempel: timer1/updateProgressBar()/setProgressBar()
+//TODO -- 1 -- Två stycken if-statements som gör samma sak. Värt det eller bättre att köra ihop dem i ett?
     static Queue<Item> bufferList = Buffer.getBufferList();
     private static final Buffer buffer = Buffer.getInstance();
     private static GUI view;
@@ -25,22 +29,12 @@ public class Controller {
     private static int inventoryPercentage;
     private static StringBuilder newFileContent;
 
-    public Controller(GUI view) {
+
+    public static void startProgram(GUI view) {
         Controller.view = view;
         newFileContent = new StringBuilder();
         producers = new ArrayList<>();
-    }
-
-    public static void updateProgressBar() {
-        int bufferSize = bufferList.size();
-        int maxBufferSize = 100; // Adjust this if needed
-        inventoryPercentage = (int) (bufferSize * 100.0 / maxBufferSize);
-        view.setProgressBar(inventoryPercentage);
-        if(inventoryPercentage <=10) {
-            logEventToFile("low");
-        }else if (inventoryPercentage >= 90) {
-            logEventToFile("high");
-        }
+        view.createAndShowGUI();
     }
 
     public static void addConsumer() {
@@ -61,13 +55,27 @@ public class Controller {
         producers.remove(0);
     }
 
+
+    public static void updateProgressBar() {
+        int bufferSize = bufferList.size();
+        int maxBufferSize = 100; // Adjust this if needed
+        inventoryPercentage = (int) (bufferSize * 100.0 / maxBufferSize);
+        view.setProgressBar(inventoryPercentage);
+        if (inventoryPercentage <= 10) {
+            logEventToFile("low");
+        } else if (inventoryPercentage >= 90) {
+            logEventToFile("high");
+        }
+    }
+
     public static void logEventToFile(String event) {
         newFileContent = new StringBuilder();
         switch (event) {
             case "added" -> newFileContent.append("Producer added\n");
             case "removed" -> newFileContent.append("Producer removed\n");
             case "low" -> newFileContent.append("WARNING: Inventory low. I suggest adding some producers\n");
-            case "high" -> newFileContent.append("WARNING: Inventory High. I suggest pressing the start button or removing some producers\n");
+            case "high" ->
+                    newFileContent.append("WARNING: Inventory High. I suggest pressing the start button or removing some producers\n");
             case "showInventory" ->
                     newFileContent.append("Inventory is at ").append(inventoryPercentage).append("% capacity\n");
         }
@@ -75,7 +83,7 @@ public class Controller {
     }
 
     public static void logProducersToFile() {
-        newFileContent.append("\n Amount of Producers: ").append(producers.size()).append("\n").append("If the amount of items in inventory goes down to 10% then the consumers stop buying \n").append("If it goes above 90% then the producers stop producing \n");
+        newFileContent.append("\nAmount of Producers: ").append(producers.size()).append("\nIf the amount of items in inventory goes down to 0% then the consumers stop buying \nIf it goes up to 100% then the producers stop producing \n");
         int count = 1;
         for (Producer producer : producers) {
             newFileContent.append("Producer").append(count).append(" frequency: ").append(producer.getFrequency()).append("\n");

@@ -65,8 +65,6 @@ public class GUI {
             if (!producers.isEmpty()) {
                 removeProducer();
                 logEventToFile("removed");
-            } else {
-//              consoleOutput.append("No producers to remove\n");
             }
         });
         addConsumersButton.addActionListener(e -> {
