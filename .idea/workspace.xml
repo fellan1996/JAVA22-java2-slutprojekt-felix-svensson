@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26d428b7-76c0-41fa-938c-4642ebbcca0f" name="Changes" comment="Moved the GUI from Controller to GUI.java">
+    <list default="true" id="26d428b7-76c0-41fa-938c-4642ebbcca0f" name="Changes" comment="Added the singleton pattern to GUI and Buffer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,10 +37,16 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "C:/Users/felix/Desktop/Grit-Academy/Avancerad-Java/PrimeNumbers",
-    "settings.editor.selected.configurable": "preferences.keymap"
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\felix\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="26d428b7-76c0-41fa-938c-4642ebbcca0f" name="Changes" comment="" />
@@ -74,13 +76,36 @@
       <option name="project" value="LOCAL" />
       <updated>1698848230162</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added the singleton pattern to GUI and Buffer">
+      <created>1698921097050</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698921097050</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init Commit" />
     <MESSAGE value="logging and reading from text-file" />
     <MESSAGE value="Moved the GUI from Controller to GUI.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved the GUI from Controller to GUI.java" />
+    <MESSAGE value="Added the singleton pattern to GUI and Buffer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the singleton pattern to GUI and Buffer" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
