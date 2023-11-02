@@ -4,9 +4,9 @@ package model;
 
 
 public class Producer implements Runnable {
-    Buffer buffer = null;
-    final int frequency = (int) (Math.random()*10)+1;
-    boolean isRunning = true;
+    private final Buffer buffer;
+    private final int frequency = (int) (Math.random()*10)+1;
+    private boolean isRunning = true;
 
     public Producer(Buffer buffer) {
         this.buffer = buffer;
@@ -25,7 +25,7 @@ public class Producer implements Runnable {
 
         while (isRunning) {
             try {
-                Thread.sleep(frequency*1000);
+                Thread.sleep(frequency* 1000L);
 
                 buffer.add(new Item(""+((int)(Math.random()*100))));
             } catch (InterruptedException e) {

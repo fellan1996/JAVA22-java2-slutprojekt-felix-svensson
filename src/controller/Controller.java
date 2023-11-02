@@ -17,12 +17,12 @@ public class Controller {
 //TODO -- 1 -- Skapa ett klassdiagram
 //TODO -- 1 -- Jag har en massa static. Synpunkter?
 //TODO -- 1 -- Var ska notify vara?
-//TODO -- 1 -- Ska producers.txt med i git?
+//TODO -- 1 -- Thread.sleep i producer och consumer ger en hint. Vad betyder den?
 //TODO -- 1 -- Vad tycks om min Main.java? Konstigt upplägg?
 //TODO -- 1 -- Tar jag bort en producer på rätt sätt?
 //TODO -- 1 -- Hoppar fram och tillbaka mellan view och Controller. Onödigt? värt det? Exempel: timer1/updateProgressBar()/setProgressBar()
 //TODO -- 1 -- Två stycken if-statements som gör samma sak. Värt det eller bättre att köra ihop dem i ett?
-    static Queue<Item> bufferList = Buffer.getBufferList();
+    private static final Queue<Item> bufferList = Buffer.getBufferList();
     private static final Buffer buffer = Buffer.getInstance();
     private static GUI view;
     public static List<Producer> producers;

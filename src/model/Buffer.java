@@ -9,9 +9,6 @@ public class Buffer {
     private static final Queue<Item> bufferList = new LinkedList<>();
     private static Buffer instance;
 
-    private Buffer() {
-
-    }
     public static Buffer getInstance() {
         if(instance == null) {
             instance = new Buffer();
@@ -31,7 +28,6 @@ public class Buffer {
                 throw new RuntimeException(e);
             }
         } else {
-
             bufferList.add(item);
         }
         notify();
@@ -51,7 +47,6 @@ public class Buffer {
                 e.printStackTrace();
             }
         }
-
         notify();
         System.out.print(bufferList.size() + "%\r");
     }

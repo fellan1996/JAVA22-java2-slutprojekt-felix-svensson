@@ -2,9 +2,8 @@ package model;
 
 
 public class Consumer implements Runnable {
-    Buffer buffer = null;
-    boolean isRunning = true;
-    int frequency = (int) (Math.random()*10)+1;
+    private final Buffer buffer;
+    private final int frequency = (int) (Math.random()*10)+1;
 
     public Consumer(Buffer buffer) {
         this.buffer = buffer;
@@ -13,12 +12,9 @@ public class Consumer implements Runnable {
 
     @Override
     public void run() {
-//TODO Make it so that a random number of consumers between 3 and 15 are created. Each consumer will take a random amount of time between one and ten to consume one item.
-
-
-        while (isRunning) {
+        while (true) {
             try {
-                Thread.sleep(this.frequency*1000);
+                Thread.sleep(this.frequency* 1000L);
                 buffer.remove();
 
             } catch (InterruptedException e) {
@@ -26,7 +22,5 @@ public class Consumer implements Runnable {
                 e.printStackTrace();
             }
         }
-
     }
-
 }
