@@ -6,10 +6,6 @@ import model.Item;
 import model.Producer;
 import view.GUI;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -18,92 +14,33 @@ import java.util.Queue;
 
 public class Controller {
 
-//TODO -- 1 -- Lägga till färgmarkeringar om antalet enheter blir för högt/lågt
 //TODO -- 1 -- Organisera koden så att den följer MVC och facade pattern
 //TODO -- 2 -- Skriva en kort beskrivning av programmet på GitHub
 //TODO -- 2 -- Skriva en längre beskrivning av min lösning på google drive
 //TODO -- 2 -- Skapa ett klassdiagram
-    static Queue<Item> bufferList = new LinkedList<>();
-    private static final Buffer buffer = new Buffer(bufferList);
+    static Queue<Item> bufferList = Buffer.getBufferList();
+    private static final Buffer buffer = Buffer.getInstance();
     private static GUI view;
     public static List<Producer> producers;
-//    private static JTextArea textfileOutput;
-//    private static JProgressBar progressBar;
-//    private static Timer timer1;
-//    private static Timer timer10;
     private static int inventoryPercentage;
     private static StringBuilder newFileContent;
 
     public Controller(GUI view) {
-        this.view = view;
+        Controller.view = view;
         newFileContent = new StringBuilder();
         producers = new ArrayList<>();
-        view.createAndShowGUI();
-//        SwingUtilities.invokeLater(Controller::createAndShowGUI);
-
-//        timer1 = new Timer(1000, e -> updateProgressBar());
-//        timer10 = new Timer(10000, e -> logEventToFile("showInventory"));
     }
-
-
-//    private static void createAndShowGUI() {
-//        JFrame frame = new JFrame("Producer-Consumer Simulation");
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setSize(600, 400);
-//        frame.setLayout(new FlowLayout());
-//
-//        JButton addProducerButton = new JButton("Add Producer");
-//        JButton addConsumersButton = new JButton("Start");
-//        JButton removeProducerButton = new JButton("Remove Producer");
-//
-//        producers = new ArrayList<>();
-//
-//        newFileContent = new StringBuilder();
-//        textfileOutput = new JTextArea(10, 50);
-//        progressBar = new JProgressBar(0, 100);
-//        progressBar.setStringPainted(true);
-//        JScrollPane textFileScrollPane = new JScrollPane(textfileOutput);
-//
-//        logProducersToFile();
-//
-//        addProducerButton.addActionListener(e -> {
-//            addProducer();
-//            logEventToFile("added");
-//        });
-//        removeProducerButton.addActionListener(e -> {
-//            if (!producers.isEmpty()) {
-//                removeProducer();
-//                logEventToFile("removed");
-//            } else {
-////              consoleOutput.append("No producers to remove\n");
-//            }
-//        });
-//        addConsumersButton.addActionListener(e -> {
-//            addConsumersButton.setEnabled(false); // Disable the button
-//            int numOfConsumers = (int) (Math.random() * 13) + 3;
-//            for (int i = 1; i <= numOfConsumers; i++) {
-//                addConsumer();
-//            }
-//        });
-//
-//        frame.add(addProducerButton);
-//        frame.add(addConsumersButton);
-//        frame.add(removeProducerButton);
-//        frame.add(progressBar);
-//        frame.add(textFileScrollPane);
-//
-//        frame.setVisible(true);
-//
-//        timer1.start();
-//        timer10.start();
-//    }
 
     public static void updateProgressBar() {
         int bufferSize = bufferList.size();
         int maxBufferSize = 100; // Adjust this if needed
         inventoryPercentage = (int) (bufferSize * 100.0 / maxBufferSize);
-//        progressBar.setValue(inventoryPercentage);
         view.setProgressBar(inventoryPercentage);
+        if(inventoryPercentage <=10) {
+            logEventToFile("low");
+        }else if (inventoryPercentage >= 90) {
+            logEventToFile("high");
+        }
     }
 
     public static void addConsumer() {
@@ -129,6 +66,8 @@ public class Controller {
         switch (event) {
             case "added" -> newFileContent.append("Producer added\n");
             case "removed" -> newFileContent.append("Producer removed\n");
+            case "low" -> newFileContent.append("WARNING: Inventory low. I suggest adding some producers\n");
+            case "high" -> newFileContent.append("WARNING: Inventory High. I suggest pressing the start button or removing some producers\n");
             case "showInventory" ->
                     newFileContent.append("Inventory is at ").append(inventoryPercentage).append("% capacity\n");
         }
@@ -158,7 +97,6 @@ public class Controller {
                 content.append(line).append("\n");
             }
             view.setTextArea(content.toString());
-//            textfileOutput.setText(content.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }

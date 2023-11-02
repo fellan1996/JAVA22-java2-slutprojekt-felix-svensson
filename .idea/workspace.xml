@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26d428b7-76c0-41fa-938c-4642ebbcca0f" name="Changes" comment="improved the logging code">
+    <list default="true" id="26d428b7-76c0-41fa-938c-4642ebbcca0f" name="Changes" comment="Moved the GUI from Controller to GUI.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Buffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,12 +67,20 @@
       <option name="project" value="LOCAL" />
       <updated>1698742871506</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Moved the GUI from Controller to GUI.java">
+      <created>1698848230162</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698848230162</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init Commit" />
     <MESSAGE value="logging and reading from text-file" />
-    <option name="LAST_COMMIT_MESSAGE" value="logging and reading from text-file" />
+    <MESSAGE value="Moved the GUI from Controller to GUI.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved the GUI from Controller to GUI.java" />
   </component>
 </project>

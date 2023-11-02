@@ -1,23 +1,41 @@
 package view;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
 import static controller.Controller.*;
 
 public class GUI {
 
+    private static GUI instance;
     private static Timer timer1;
     private static Timer timer10;
     private static JTextArea textfileOutput;
     private static JProgressBar progressBar;
-    public GUI() {
+    private GUI() {
 //        createAndShowGUI();
         timer1 = new Timer(1000, e -> updateProgressBar());// A method in Controller
         timer10 = new Timer(10000, e -> logEventToFile("showInventory"));// A method in Controller
     }
+    public static GUI getInstance() {
+        if(instance == null) {
+            instance = new GUI();
+        }
+        return instance;
+    }
     public void setProgressBar(int value) {
         progressBar.setValue(value);
+        if(value <= 10) {
+            Border redBorder = new LineBorder(Color.RED, 2);
+            progressBar.setBorder(redBorder);
+        }else if (value >= 90) {
+            Border greenBorder = new LineBorder(Color.GREEN, 2);
+            progressBar.setBorder(greenBorder);
+        }else{
+            progressBar.setBorder(null);
+        }
     }
     public void setTextArea (String content) {
         textfileOutput.setText(content);
@@ -32,9 +50,6 @@ public class GUI {
         JButton addConsumersButton = new JButton("Start");
         JButton removeProducerButton = new JButton("Remove Producer");
 
-//        producers = new ArrayList<>();
-
-//        newFileContent = new StringBuilder();
         textfileOutput = new JTextArea(30, 50);
         progressBar = new JProgressBar(0, 100);
         progressBar.setStringPainted(true);
