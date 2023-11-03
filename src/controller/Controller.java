@@ -13,22 +13,12 @@ import java.util.Queue;
 
 public class Controller {
 
-    //TODO -- 1 -- Lägga till klassdiagrammet på GitHub beskrivningen
-//TODO -- 1 -- Skapa ett klassdiagram
-//TODO -- 1 -- Jag har en massa static. Synpunkter?
-//TODO -- 1 -- Var ska notify vara?
-//TODO -- 1 -- Thread.sleep i producer och consumer ger en hint. Vad betyder den?
-//TODO -- 1 -- Vad tycks om min Main.java? Konstigt upplägg?
-//TODO -- 1 -- Tar jag bort en producer på rätt sätt?
-//TODO -- 1 -- Hoppar fram och tillbaka mellan view och Controller. Onödigt? värt det? Exempel: timer1/updateProgressBar()/setProgressBar()
-//TODO -- 1 -- Två stycken if-statements som gör samma sak. Värt det eller bättre att köra ihop dem i ett?
     private static final Queue<Item> bufferList = Buffer.getBufferList();
     private static final Buffer buffer = Buffer.getInstance();
     private static GUI view;
     public static List<Producer> producers;
     private static int inventoryPercentage;
     private static StringBuilder newFileContent;
-
 
     public static void startProgram(GUI view) {
         Controller.view = view;
@@ -54,7 +44,6 @@ public class Controller {
         producers.get(0).stop();
         producers.remove(0);
     }
-
 
     public static void updateProgressBar() {
         int bufferSize = bufferList.size();

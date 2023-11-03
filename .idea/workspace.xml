@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26d428b7-76c0-41fa-938c-4642ebbcca0f" name="Changes" comment="small fixes and improvements">
+    <list default="true" id="26d428b7-76c0-41fa-938c-4642ebbcca0f" name="Changes" comment="mini fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/files/producers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/files/producers.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Buffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Consumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Producer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698935255826</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="mini fixes">
+      <created>1698943093513</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1698943093513</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -122,7 +131,8 @@
     <MESSAGE value="Moved the GUI from Controller to GUI.java" />
     <MESSAGE value="Added the singleton pattern to GUI and Buffer" />
     <MESSAGE value="small fixes and improvements" />
-    <option name="LAST_COMMIT_MESSAGE" value="small fixes and improvements" />
+    <MESSAGE value="mini fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="mini fixes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

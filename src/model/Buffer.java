@@ -8,7 +8,6 @@ public class Buffer {
 
     private static final Queue<Item> bufferList = new LinkedList<>();
     private static Buffer instance;
-
     public static Buffer getInstance() {
         if(instance == null) {
             instance = new Buffer();

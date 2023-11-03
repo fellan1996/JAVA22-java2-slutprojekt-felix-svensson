@@ -10,10 +10,10 @@ import static controller.Controller.*;
 public class GUI {
 
     private static GUI instance;
-    private static Timer timer1;
-    private static Timer timer10;
-    private static JTextArea textfileOutput;
-    private static JProgressBar progressBar;
+    private final Timer timer1;
+    private final Timer timer10;
+    private JTextArea textfileOutput;
+    private JProgressBar progressBar;
     private GUI() {
 //        createAndShowGUI();
         timer1 = new Timer(1000, e -> updateProgressBar());// A method in Controller

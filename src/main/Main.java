@@ -1,3 +1,5 @@
+package main;
+
 import controller.Controller;
 import view.GUI;
 
